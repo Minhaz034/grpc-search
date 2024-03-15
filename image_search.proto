@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package imagesearch;
+
+// The image search service definition.
+service ImageSearchService {
+  // Sends a search request to the server.
+  rpc SearchImage(SearchRequest) returns (SearchResponse) {}
+}
+
+// The request message containing the keyword.
+message SearchRequest {
+  string keyword = 1;
+}
+
+// The response message containing the image.
+// Note: We'll use a string to represent the image path or URL for simplicity.
+// In a real-world scenario, you might want to use bytes for the actual image data,
+// or provide a URL to where the image can be accessed.
+message SearchResponse {
+  string image_str = 1;
+}
