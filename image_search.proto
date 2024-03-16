@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package imagesearch;
 
+option go_package = "example.com/grpc-client";
+
 // The image search service definition.
 service ImageSearchService {
   // Sends a search request to the server.
