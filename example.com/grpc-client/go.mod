@@ -1,6 +1,6 @@
 module example.com/grpc-client
 
-go 1.22.0
+go 1.19
 
 require (
 	github.com/golang/protobuf v1.5.3 // indirect

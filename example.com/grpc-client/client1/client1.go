@@ -41,7 +41,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 
 	keyword := r.FormValue("keyword")
 	// Set up a connection to the server.
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure(), grpc.WithBlock())
+	conn, err := grpc.Dial("host.docker.internal:50051", grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
@@ -62,6 +62,6 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", searchHandler)
-	log.Println("Server started on :8080")
+	log.Println("Client1 started on :8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
