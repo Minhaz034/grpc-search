@@ -8,7 +8,8 @@ import image_search_pb2, image_search_pb2_grpc
 import grpc
 from concurrent import futures
 # server/image_database/cat
-ROOT_DIR = "/home/minhaz/UTA/DS/project-2/grpc-search/server/image_database"
+# ROOT_DIR = "/home/minhaz/UTA/DS/project-2/grpc-search/server/image_database"
+ROOT_DIR = os.getenv('IMAGE_DATABASE_DIR', '/app/image_database')
 
 def search_files(keyword):
     print(f"Incoming request for keyword: {keyword}")

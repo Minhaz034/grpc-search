@@ -41,7 +41,7 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 
 	keyword := r.FormValue("keyword")
 	// Set up a connection to the server.
-	conn, err := grpc.Dial("host.docker.internal:50051", grpc.WithInsecure(), grpc.WithBlock())
+	conn, err := grpc.Dial("grpc-server:50051", grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}

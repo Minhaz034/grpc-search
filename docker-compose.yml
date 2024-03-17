@@ -1,0 +1,46 @@
+# version: '3.8'
+# services:
+#   grpc-server:
+#     build: .
+#     ports:
+#       - "50051:50051"
+#     volumes:
+#       - type: volume
+#         source: image_database_volume
+#         target: /app/image_database
+#     environment:
+#       - PYTHONUNBUFFERED=1
+
+# volumes:
+#   image_database_volume:
+version: '3.8'
+services:
+  grpc-server:
+    build:
+      context: ./server # Adjusted to point to the directory containing the Dockerfile for the server
+    ports:
+      - "50051:50051"
+    volumes:
+    - /home/minhaz/UTA/DS/project-2/grpc-search/server/image_database:/app/image_database
+    environment:
+      - PYTHONUNBUFFERED=1
+      - IMAGE_DATABASE_DIR=/app/image_database
+    networks:
+      - grpc-network
+
+  grpc-client1:
+    build:
+      context: ./example.com/grpc-client # Adjusted to point to the directory containing the Dockerfile for the client
+    ports:
+      - "8080:8080"
+    depends_on:
+      - grpc-server
+    networks:
+      - grpc-network
+
+networks:
+  grpc-network:
+    driver: bridge
+
+volumes:
+  image_database_volume:
