@@ -10,9 +10,16 @@ from concurrent import futures
 # server/image_database/cat
 # ROOT_DIR = "/home/minhaz/UTA/DS/project-2/grpc-search/server/image_database"
 ROOT_DIR = os.getenv('IMAGE_DATABASE_DIR', '/app/image_database')
+NOT_FOUND = "not-found.png"
 
 def search_files(keyword):
+    keyword = keyword.strip().lower()
     print(f"Incoming request for keyword: {keyword}")
+    if keyword not in os.listdir(ROOT_DIR):
+        print("NOT FOUND")
+        resultant_path = os.path.join(ROOT_DIR,NOT_FOUND)
+        return image_to_base64(resultant_path)
+
     search_directory = os.path.join(ROOT_DIR, keyword)
     result_paths = os.listdir(search_directory)
     RANDOM_LOC = random.randint(0,1)

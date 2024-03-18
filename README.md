@@ -17,3 +17,9 @@ From the root directory, run
 docker compose up --build
 ```
 
+## Using the search clients:
+After the service is up, you can use the search engine clients from:
+-client1 ---  localhost:8081
+-client2 ---  localhost:8082
+-client3 ---  localhost:8083
+
