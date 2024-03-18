@@ -17,7 +17,7 @@ def search_files(keyword):
     result_paths = os.listdir(search_directory)
     RANDOM_LOC = random.randint(0,1)
     selected_res =  os.path.join(search_directory, result_paths[RANDOM_LOC])
-    print(f"Responding with {result_paths[RANDOM_LOC]}")
+    print(f"Responding with file: {result_paths[RANDOM_LOC]}")
     return image_to_base64(selected_res)
 
 

@@ -56,7 +56,7 @@ services:
     build:
       context: ./example.com/grpc-client
       args:
-        CLIENT_DIR: client2
+        CLIENT_DIR: client3
     ports:
       - "8083:8080"
     depends_on:
