@@ -30,9 +30,35 @@ services:
 
   grpc-client1:
     build:
-      context: ./example.com/grpc-client # Adjusted to point to the directory containing the Dockerfile for the client
+      context: ./example.com/grpc-client
+      args:
+        CLIENT_DIR: client1
     ports:
-      - "8080:8080"
+      - "8081:8080"
+    depends_on:
+      - grpc-server
+    networks:
+      - grpc-network
+  
+  grpc-client2:
+    build:
+      context: ./example.com/grpc-client
+      args:
+        CLIENT_DIR: client2
+    ports:
+      - "8082:8080"
+    depends_on:
+      - grpc-server
+    networks:
+      - grpc-network
+  
+  grpc-client3:
+    build:
+      context: ./example.com/grpc-client
+      args:
+        CLIENT_DIR: client2
+    ports:
+      - "8083:8080"
     depends_on:
       - grpc-server
     networks:
@@ -44,3 +70,5 @@ networks:
 
 volumes:
   image_database_volume:
+
+
